@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form action="/register" method="POST">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" pattern="[A-Za-z]+" required>
+        <br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" pattern="[A-Za-z]+" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <!-- Add more countries as needed -->
+        </select>
+        <br><br>
+
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+            <!-- Options will be populated dynamically based on the selected country -->
+        </select>
+        <br><br>
+
+        <label for="city">City:</label>
+        <select id="city" name="city" required>
+            <!-- Options will be populated dynamically based on the selected state -->
+        </select>
+        <br><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+        <br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date"  id="dob" name="dob" required>
+        <br><br>
+
+        <label for="age">Age:</label>
+        <input type="number"  id="age" name="age" required>
+        <br><br>
+
+        <input type="submit" value="Save">
+    </form>
+
+    <script>
+        const v = document.querySelector('#dob')
+        v.addEventListener('click',(e)=>{
+
+            console.log(+e.target.value.slice(0,4));
+           
+            const age = new Date().getFullYear() - +e.target.value.slice(0,4);
+
+           document.querySelector('#age').setAttribute('placeholder',age)
+           console.log(v);
+        })
+        
+    </script>
+</body>
+</html>
