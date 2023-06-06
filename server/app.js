@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const data = require('./data')
 
-const muri = 'mongodb://127.0.0.1:27017/myapp'
+const muri = 'mongodb://127.0.0.1:27017'
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 console.log(data.MONGO_URL);
 // Connect to MongoDB
-mongoose.connect(muri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(data.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
